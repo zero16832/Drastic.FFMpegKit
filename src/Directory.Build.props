@@ -1,0 +1,32 @@
+<Project>
+    <PropertyGroup>
+		<LangVersion>preview</LangVersion>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>disable</Nullable>
+		<Company>Drastic Actions</Company>
+		<Copyright>Copyright (C) Drastic Actions</Copyright>
+		<IsPackable>false</IsPackable>
+		<Version>5.1</Version>
+        <Authors>$(Company)</Authors>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageIcon>favicon.png</PackageIcon>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<DebugType>embedded</DebugType>
+	</PropertyGroup>
+
+    <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	</PropertyGroup>
+
+   <ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)favicon.png" Pack="true" PackagePath="" Visible="false" />
+	</ItemGroup>
+
+    <ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.1.1">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+</Project>
