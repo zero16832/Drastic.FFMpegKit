@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-macos</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+    <UseSGen>false</UseSGen>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <CreatePackage>false</CreatePackage>
+    <UseSGen>false</UseSGen>
+  </PropertyGroup>
+  <ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" Visible="false" />
+	</ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+   <ItemGroup>
+    <NativeReference Include="libs\macos\ffmpegkit.framework">
+      <Kind>Framework</Kind>
+      <ForceLoad>True</ForceLoad>
+      <IsCxx>True</IsCxx>
+      <Frameworks>VideoToolbox CoreMotion Accelerate</Frameworks>
+      <LinkerFlags>-lc++ -liconv -lbz2 -lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libswscale.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libswresample.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libavutil.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libavformat.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libavfilter.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libavdevice.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\macos\libavcodec.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+  </ItemGroup>
+</Project>

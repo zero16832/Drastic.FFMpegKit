@@ -127,49 +127,65 @@ build_audio_apple: clean_framework_dir
 	unzip -o frameworks/audio/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/audio/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/audio/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Audio.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Audio.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Audio.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Audio.tvOS -o ../../artifacts
 
 build_full_apple: clean_framework_dir
 	unzip -o frameworks/full/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/full/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/full/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Full.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Full.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Full.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Full.tvOS -o ../../artifacts
 
 build_full_gpl_apple: clean_framework_dir
 	unzip -o frameworks/full-gpl/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/full-gpl/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/full-gpl/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Full.Gpl.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Full.Gpl.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Full.Gpl.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Full.Gpl.tvOS -o ../../artifacts
 
 build_https_apple: clean_framework_dir
 	unzip -o frameworks/https/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/https/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/https/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Https.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Https.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Https.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Https.tvOS -o ../../artifacts
 
 build_https_gpl_apple: clean_framework_dir
 	unzip -o frameworks/https-gpl/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/https-gpl/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/https-gpl/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Https.Gpl.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Https.Gpl.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Https.Gpl.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Https.Gpl.tvOS -o ../../artifacts
 
 build_video_apple: clean_framework_dir
 	unzip -o frameworks/video/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/video/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/video/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Video.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Video.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Video.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Video.tvOS -o ../../artifacts
 
 build_min_apple: clean_framework_dir
 	unzip -o frameworks/min/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/min/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/min/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Min.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Min.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Min.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Min.tvOS -o ../../artifacts
 
 build_min_gpl_apple: clean_framework_dir
 	unzip -o frameworks/min-gpl/ffmpeg-kit-$(VERSION)-ios-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/ios
 	unzip -o frameworks/min-gpl/ffmpeg-kit-$(VERSION)-macos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/macos
 	unzip -o frameworks/min-gpl/ffmpeg-kit-$(VERSION)-tvos-framework.zip -d src/Drastic.FFMpegKit.Apple/libs/tvos
-	cd src/Drastic.FFMpegKit.Apple && dotnet pack -c Release -p:PackageID=Drastic.FFMpegKit.Min.Gpl.Apple -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.iOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Min.Gpl.iOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.MacOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Min.Gpl.MacOS -o ../../artifacts
+	cd src/Drastic.FFMpegKit.Apple && dotnet pack Drastic.FFMpegKit.tvOS.csproj -c Release -p:PackageID=Drastic.FFMpegKit.Min.Gpl.tvOS -o ../../artifacts
 
 build_audio_android: copy_common_jars
 	cp jars/audio/ffmpeg-kit-audio-$(VERSION).aar src/Drastic.FFMpegKit.Android/Jars/ffmpeg-kit.aar

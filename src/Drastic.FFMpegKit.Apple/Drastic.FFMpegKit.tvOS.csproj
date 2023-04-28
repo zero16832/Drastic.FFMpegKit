@@ -1,0 +1,53 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-tvos</TargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>true</ImplicitUsings>
+    <IsBindingProject>true</IsBindingProject>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+  <ItemGroup>
+		<None Include="$(MSBuildThisFileDirectory)README.md" Pack="true" PackagePath="" Visible="false" />
+	</ItemGroup>
+  <ItemGroup>
+    <ObjcBindingApiDefinition Include="ApiDefinition.cs" />
+    <ObjcBindingCoreSource Include="StructsAndEnums.cs" />
+  </ItemGroup>
+   <ItemGroup>
+    <NativeReference Include="libs\tvos\ffmpegkit.framework">
+      <Kind>Framework</Kind>
+      <ForceLoad>True</ForceLoad>
+      <IsCxx>True</IsCxx>
+      <Frameworks>VideoToolbox CoreMotion Accelerate</Frameworks>
+      <LinkerFlags>-lc++ -liconv -lbz2 -lz</LinkerFlags>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libswscale.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libswresample.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libavutil.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libavformat.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libavfilter.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libavdevice.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+    <NativeReference Include="libs\tvos\libavcodec.framework">
+      <Kind>Framework</Kind>
+      <IsCxx>True</IsCxx>
+    </NativeReference>
+  </ItemGroup>
+</Project>
