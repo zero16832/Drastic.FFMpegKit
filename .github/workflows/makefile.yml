@@ -14,12 +14,20 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v2
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: '8.0.x'
+
+    - name: Install .NET workloads
+      run: |
+        dotnet workload install android
+        dotnet workload install ios
+        dotnet workload install maccatalyst
+        dotnet workload install macos
+        dotnet workload install tvos
 
     - name: Install dependencies
       run: |
@@ -58,15 +66,7 @@ jobs:
         make build_video_apple
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v2
       with:
-        name: ffmpeg-kit-nuget-packages
+        name: ffmpeg-kit-packages
         path: artifacts/*.nupkg
-
-    - name: Publish NuGet packages
-      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-      run: |
-        for package in artifacts/*.nupkg
-        do
-          dotnet nuget push $package --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
-        done
