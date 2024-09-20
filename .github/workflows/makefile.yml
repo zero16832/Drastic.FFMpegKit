@@ -1,0 +1,72 @@
+name: Build FFmpeg Kit
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+env:
+  VERSION: "5.1.LTS"
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Install dependencies
+      run: |
+        brew install curl
+        brew install unzip
+
+    - name: Clean artifacts
+      run: make clean_artifacts
+
+    - name: Download Android JARs
+      run: make download_jars
+
+    - name: Download Apple Frameworks
+      run: make download_frameworks
+
+    - name: Build Android variants
+      run: |
+        make build_audio_android
+        make build_full_android
+        make build_full_gpl_android
+        make build_https_android
+        make build_https_gpl_android
+        make build_min_android
+        make build_min_gpl_android
+        make build_video_android
+
+    - name: Build Apple variants
+      run: |
+        make build_audio_apple
+        make build_full_apple
+        make build_full_gpl_apple
+        make build_https_apple
+        make build_https_gpl_apple
+        make build_min_apple
+        make build_min_gpl_apple
+        make build_video_apple
+
+    - name: Upload artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: ffmpeg-kit-nuget-packages
+        path: artifacts/*.nupkg
+
+    - name: Publish NuGet packages
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      run: |
+        for package in artifacts/*.nupkg
+        do
+          dotnet nuget push $package --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+        done
