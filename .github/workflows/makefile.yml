@@ -65,8 +65,14 @@ jobs:
         make build_min_gpl_apple
         make build_video_apple
 
-    - name: Upload artifacts
-      uses: actions/upload-artifact@v4
-      with:
-        name: ffmpeg-kit-packages
-        path: artifacts/*.nupkg
+    - name: Upload individual packages
+      run: |
+        for package in artifacts/*.nupkg
+        do
+          filename=$(basename "$package")
+          echo "Uploading $filename"
+          artifact_name="${filename%.nupkg}"
+          gh artifact upload "$package" --name "$artifact_name"
+        done
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
