@@ -1,4 +1,4 @@
-VERSION="5.1.LTS"
+VERSION="6.0.LTS"
 
 download_build_android: download_jars build_android
 
