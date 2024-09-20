@@ -9,6 +9,7 @@ on:
 
 env:
   VERSION: "6.0.LTS"
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   build:
