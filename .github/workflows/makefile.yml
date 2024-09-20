@@ -73,24 +73,8 @@ jobs:
           filename=$(basename "$package")
           echo "Uploading $filename"
           artifact_name="${filename%.nupkg}"
-          echo "artifact_name=$artifact_name" >> $GITHUB_ENV
-          echo "package_path=$package" >> $GITHUB_ENV
           
           echo "::group::Upload $artifact_name"
-          gh api --method POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            /repos/${{ github.repository }}/actions/artifacts \
-            -f name="$artifact_name" \
-            -f size=$(stat -f%z "$package") \
-            > artifact_result.json
-          
-          upload_url=$(jq -r .upload_url artifact_result.json)
-          
-          curl -X PUT \
-            -H "Accept: application/vnd.github.v3+json" \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            -H "Content-Type: application/octet-stream" \
-            --data-binary @"$package" \
-            "$upload_url"
+          gh actions artifact upload "$artifact_name" "$package" --repo ${{ github.repository }}
           echo "::endgroup::"
         done
