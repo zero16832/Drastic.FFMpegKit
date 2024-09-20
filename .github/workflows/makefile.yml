@@ -75,6 +75,6 @@ jobs:
           artifact_name="${filename%.nupkg}"
           
           echo "::group::Upload $artifact_name"
-          gh actions artifact upload "$artifact_name" "$package" --repo ${{ github.repository }}
+          gh run upload "$package" --name "$artifact_name"
           echo "::endgroup::"
         done
